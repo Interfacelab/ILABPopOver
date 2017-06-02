@@ -8,8 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		FF561ACC1EE176CC00D9C635 /* ILABPopOver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF561AC21EE176CC00D9C635 /* ILABPopOver.framework */; };
-		FF561AD11EE176CC00D9C635 /* ILABPopOverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF561AD01EE176CC00D9C635 /* ILABPopOverTests.m */; };
-		FF561AD31EE176CD00D9C635 /* ILABPopOver.h in Headers */ = {isa = PBXBuildFile; fileRef = FF561AC51EE176CC00D9C635 /* ILABPopOver.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FF561AE11EE1770400D9C635 /* ILABPopOver.h in Headers */ = {isa = PBXBuildFile; fileRef = FF561ADF1EE1770400D9C635 /* ILABPopOver.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FF561AE61EE1779400D9C635 /* ILABPopOverView.h in Headers */ = {isa = PBXBuildFile; fileRef = FF561AE21EE1779400D9C635 /* ILABPopOverView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FF561AE71EE1779400D9C635 /* ILABPopOverView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF561AE31EE1779400D9C635 /* ILABPopOverView.m */; };
+		FF561AE81EE1779400D9C635 /* ILABPopOverViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = FF561AE41EE1779400D9C635 /* ILABPopOverViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FF561AE91EE1779400D9C635 /* ILABPopOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF561AE51EE1779400D9C635 /* ILABPopOverViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,11 +27,13 @@
 
 /* Begin PBXFileReference section */
 		FF561AC21EE176CC00D9C635 /* ILABPopOver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ILABPopOver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FF561AC51EE176CC00D9C635 /* ILABPopOver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ILABPopOver.h; sourceTree = "<group>"; };
-		FF561AC61EE176CC00D9C635 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF561ACB1EE176CC00D9C635 /* ILABPopOverTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ILABPopOverTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FF561AD01EE176CC00D9C635 /* ILABPopOverTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ILABPopOverTests.m; sourceTree = "<group>"; };
-		FF561AD21EE176CD00D9C635 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF561ADD1EE1770400D9C635 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF561ADF1EE1770400D9C635 /* ILABPopOver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILABPopOver.h; sourceTree = "<group>"; };
+		FF561AE21EE1779400D9C635 /* ILABPopOverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILABPopOverView.h; sourceTree = "<group>"; };
+		FF561AE31EE1779400D9C635 /* ILABPopOverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILABPopOverView.m; sourceTree = "<group>"; };
+		FF561AE41EE1779400D9C635 /* ILABPopOverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILABPopOverViewController.h; sourceTree = "<group>"; };
+		FF561AE51EE1779400D9C635 /* ILABPopOverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILABPopOverViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,8 +58,8 @@
 		FF561AB81EE176CC00D9C635 = {
 			isa = PBXGroup;
 			children = (
-				FF561AC41EE176CC00D9C635 /* ILABPopOver */,
-				FF561ACF1EE176CC00D9C635 /* ILABPopOverTests */,
+				FF561ADE1EE1770400D9C635 /* Source */,
+				FF561ADC1EE1770400D9C635 /* Resources */,
 				FF561AC31EE176CC00D9C635 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -68,22 +73,24 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		FF561AC41EE176CC00D9C635 /* ILABPopOver */ = {
+		FF561ADC1EE1770400D9C635 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				FF561AC51EE176CC00D9C635 /* ILABPopOver.h */,
-				FF561AC61EE176CC00D9C635 /* Info.plist */,
+				FF561ADD1EE1770400D9C635 /* Info.plist */,
 			);
-			path = ILABPopOver;
+			path = Resources;
 			sourceTree = "<group>";
 		};
-		FF561ACF1EE176CC00D9C635 /* ILABPopOverTests */ = {
+		FF561ADE1EE1770400D9C635 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				FF561AD01EE176CC00D9C635 /* ILABPopOverTests.m */,
-				FF561AD21EE176CD00D9C635 /* Info.plist */,
+				FF561ADF1EE1770400D9C635 /* ILABPopOver.h */,
+				FF561AE21EE1779400D9C635 /* ILABPopOverView.h */,
+				FF561AE31EE1779400D9C635 /* ILABPopOverView.m */,
+				FF561AE41EE1779400D9C635 /* ILABPopOverViewController.h */,
+				FF561AE51EE1779400D9C635 /* ILABPopOverViewController.m */,
 			);
-			path = ILABPopOverTests;
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -93,7 +100,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF561AD31EE176CD00D9C635 /* ILABPopOver.h in Headers */,
+				FF561AE11EE1770400D9C635 /* ILABPopOver.h in Headers */,
+				FF561AE81EE1779400D9C635 /* ILABPopOverViewController.h in Headers */,
+				FF561AE61EE1779400D9C635 /* ILABPopOverView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,6 +206,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF561AE91EE1779400D9C635 /* ILABPopOverViewController.m in Sources */,
+				FF561AE71EE1779400D9C635 /* ILABPopOverView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,7 +215,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF561AD11EE176CC00D9C635 /* ILABPopOverTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,7 +336,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = ILABPopOver/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Resources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.interfacelab.ILABPopOver;
@@ -344,7 +354,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = ILABPopOver/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Resources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.interfacelab.ILABPopOver;

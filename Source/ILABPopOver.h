@@ -14,6 +14,7 @@ FOUNDATION_EXPORT double ILABPopOverVersionNumber;
 //! Project version string for ILABPopOver.
 FOUNDATION_EXPORT const unsigned char ILABPopOverVersionString[];
 
-// In this header, you should import all the public headers of your framework using statements like #import <ILABPopOver/PublicHeader.h>
 
+#import "ILABPopOverView.h"
+#import "ILABPopOverViewController.h"
 
