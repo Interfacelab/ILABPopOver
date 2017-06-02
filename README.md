@@ -19,7 +19,7 @@ pod 'ILABPopOver'
 Clone the repo, run `pod install` in the demo project.
 
 
-##Usage
+## Usage
 
 Using ILABPopOver is a fairly simple and straight forward affair.  It works in two modes: as a modal dialog and as a popover similar to `UIPopOverController` or `UIMenuController`.
 
@@ -27,7 +27,7 @@ It is composed of two classes, the `ILABPopOverViewController` and the `ILABPopO
 
 The `ILABPopOverViewController` is responsible for displaying the pop over view, while the `ILABPopOverView` simply renders the popup "balloon".
 
-###Using as Dialog
+### Using as Dialog
 In dialog mode, the pop over will display your view in a modal popup:
 
 ```objc
@@ -48,7 +48,7 @@ To dismiss the popup:
 }
 ```
 
-###Using as Pop Over
+### Using as Pop Over
 In pop over mode, your view will be presented to the user as a balloon pop up.
 
 ```objc
@@ -69,7 +69,7 @@ To dismiss the popup:
 }
 ```
 
-###Shared Instances
+### Shared Instances
 The `ILABPopOverViewController` has two static shared instances to simplify usage.
 
 The `sharedDialog` static instance is the view controller for displaying an pop over as a dialog.
@@ -78,9 +78,9 @@ The `sharedPopOver` static instance is the view controller for displaying all ot
 
 You should configure these instances on app launch to match whatever styles and behaviors are appropriate for your app.
 
-##Configuration
+## Configuration
 
-###ILABPopOverViewController
+### ILABPopOverViewController
 
 | Property | Type | Description |
 | -------- | ---- | ----------- |
@@ -96,7 +96,7 @@ You should configure these instances on app launch to match whatever styles and 
 | edgeGap | CGFloat | The amount of gap or margin between any edge of the popover and the screen. |
 | overlayBlurEffect | UIBlurEffect | The blur effect to use for the overlay background. |
 
-###ILABPopOverView
+### ILABPopOverView
 
 | Property | Type | Description |
 | -------- | ---- | ----------- |
