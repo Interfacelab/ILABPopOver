@@ -245,6 +245,82 @@
     [self displayInView:window fromOrigin:YES];
 }
 
+-(void)show:(UIView * _Nonnull)contentView fromPoint:(CGPoint)fromPoint fromView:(UIView * _Nonnull)fromView highlightViews:(NSArray<UIView *> * _Nonnull)highlightViews {
+    UIWindow *window = [[[UIApplication sharedApplication] windows] lastObject] ?: [[UIApplication sharedApplication] keyWindow];
+    if (!window) {
+        return;
+    }
+    
+    displayedFromView = fromView;
+    displayedFromOrigin = YES;
+    displayedContentView = contentView;
+    
+    displayFromViewRect = [fromView convertRect:fromView.bounds toView:window];
+    displayedDirection = ILABPopOverDirectionUp;
+    
+    CGRect proposedRect = [popOverView proposedFrameWithContentView:contentView fromDirection:ILABPopOverDirectionUp];
+    
+    if ((displayFromViewRect.origin.y - proposedRect.size.height) < _edgeGap) {
+        displayedDirection = ILABPopOverDirectionDown;
+        fromPoint.y = displayFromViewRect.size.height;
+        proposedRect = [popOverView proposedFrameWithContentView:contentView fromDirection:displayedDirection];
+    }
+    
+    if (displayedDirection == ILABPopOverDirectionUp) {
+        proposedRect = CGRectMake(CGRectGetMidX(displayFromViewRect) - CGRectGetMidX(proposedRect), displayFromViewRect.origin.y - proposedRect.size.height, proposedRect.size.width, proposedRect.size.height);
+    } else {
+        proposedRect = CGRectMake(CGRectGetMidX(displayFromViewRect) - CGRectGetMidX(proposedRect), displayFromViewRect.origin.y + displayFromViewRect.size.height, proposedRect.size.width, proposedRect.size.height);
+    }
+    
+    if (proposedRect.origin.x < _edgeGap) {
+        proposedRect.origin.x = _edgeGap;
+    } else if (proposedRect.origin.x + proposedRect.size.width > window.bounds.size.width - _edgeGap) {
+        proposedRect.origin.x = window.bounds.size.width - _edgeGap - proposedRect.size.width;
+    }
+    
+    popOverView.frame = proposedRect;
+    [popOverView prepareForDisplay:contentView fromDirection:displayedDirection arrowLocation:[popOverView convertPoint:fromPoint fromView:fromView]];
+    popOverView.frame = proposedRect;
+    
+    overlayControl.maskView = nil;
+    if (overlayEffectView) {
+        overlayEffectView.maskView = nil;
+    }
+    
+    if (_showHighlight && highlightViews) {
+        UIBezierPath *maskPath = [UIBezierPath bezierPathWithRect:window.bounds];
+
+        for(UIView *highlightView in highlightViews) {
+            
+            CGRect dfvr = [highlightView convertRect:highlightView.bounds toView:window];
+            
+            CGRect highlightRect = CGRectMake(dfvr.origin.x - _highlightPadding.left, dfvr.origin.y - _highlightPadding.top, dfvr.size.width + (_highlightPadding.left + _highlightPadding.right), dfvr.size.height + (_highlightPadding.top + _highlightPadding.bottom));
+            
+            
+            UIBezierPath *highlightPath = [UIBezierPath bezierPathWithRoundedRect:highlightRect cornerRadius:_highlightCornerRadius];
+            [maskPath appendPath:highlightPath];
+        }
+        
+        CAShapeLayer *maskLayer = [CAShapeLayer layer];
+        maskLayer.path = maskPath.CGPath;
+        maskLayer.fillRule = kCAFillRuleEvenOdd;
+        
+        UIView *maskView = [[UIView alloc] initWithFrame:window.bounds];
+        maskView.backgroundColor = UIColor.blackColor;
+        maskView.layer.mask = maskLayer;
+        
+        if (overlayEffectView) {
+            overlayEffectView.maskView = maskView;
+        } else {
+            overlayControl.maskView = maskView;
+        }
+    }
+    
+    
+    [self displayInView:window fromOrigin:YES];
+
+}
+
 
 -(void)displayInView:(UIView *)view fromOrigin:(BOOL)fromOrigin {
     if (!overlayEffectView) {

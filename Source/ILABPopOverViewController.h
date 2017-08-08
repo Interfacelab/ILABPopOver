@@ -152,6 +152,17 @@ typedef void(^ILABPopOverCompleteBlock)();
 
 
 /**
+ Displays the popover from a specific point and highlights a group of views
+
+ @param contentView The content view to display in the dialog.
+ @param fromPoint The point to display the popup from, local to the view to display the popup from.
+ @param fromView The view to display the popup from.
+ @param highlightViews Array of views to highlight on popover
+ */
+-(void)show:(UIView * _Nonnull)contentView fromPoint:(CGPoint)fromPoint fromView:(UIView * _Nonnull)fromView highlightViews:(NSArray<UIView *> * _Nonnull)highlightViews;
+
+
+/**
  Dismisses the popover
 
  @param completeBlock The block to trigger after the dismissal is complete.
