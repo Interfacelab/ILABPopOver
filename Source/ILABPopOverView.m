@@ -120,6 +120,8 @@
 }
 
 -(void)prepareForDisplay:(UIView * _Nonnull)contentView fromDirection:(ILABPopOverDirection)direction arrowLocation:(CGPoint)arrowLocation {
+    arrowLocation.x = MAX(18, arrowLocation.x);
+    
     self.layer.mask = nil;
     self.layer.backgroundColor = nil;
     
