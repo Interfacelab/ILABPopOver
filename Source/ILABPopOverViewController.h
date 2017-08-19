@@ -126,40 +126,80 @@ typedef void(^ILABPopOverCompleteBlock)();
 
 /**
  Displays the popover as a dialog.
-
+ 
  @param contentView The content view to display in the dialog.
  */
 -(void)showAsDialog:(UIView * _Nonnull)contentView;
+/**
+ Displays the popover as a dialog.
+ 
+ @param contentView The content view to display in the dialog.
+ @param completeBlock The block (optional) to call when showing the popover has completed.
+ */
+-(void)showAsDialog:(UIView * _Nonnull)contentView complete:(ILABPopOverCompleteBlock _Nullable)completeBlock;
 
 
 /**
  Displays the popover attached to a specific view
-
+ 
  @param contentView The content view to display in the dialog.
  @param fromView The view to display the popup from.
  */
 -(void)show:(UIView * _Nonnull)contentView fromView:(UIView * _Nonnull)fromView;
 
+/**
+ Displays the popover attached to a specific view
+ 
+ @param contentView The content view to display in the dialog.
+ @param fromView The view to display the popup from.
+ @param completeBlock The block (optional) to call when showing the popover has completed.
+ */
+-(void)show:(UIView * _Nonnull)contentView fromView:(UIView * _Nonnull)fromView complete:(ILABPopOverCompleteBlock _Nullable)completeBlock;
+
 
 /**
  Displays the popover from a specific point
-
+ 
  @param contentView The content view to display in the dialog.
  @param fromPoint The point to display the popup from, local to the view to display the popup from.
  @param fromView The view to display the popup from.
  */
 -(void)show:(UIView * _Nonnull)contentView fromPoint:(CGPoint)fromPoint fromView:(UIView * _Nonnull)fromView;
 
+/**
+ Displays the popover from a specific point
+ 
+ @param contentView The content view to display in the dialog.
+ @param fromPoint The point to display the popup from, local to the view to display the popup from.
+ @param fromView The view to display the popup from.
+ @param completeBlock The block (optional) to call when showing the popover has completed.
+ */
+-(void)show:(UIView * _Nonnull)contentView fromPoint:(CGPoint)fromPoint fromView:(UIView * _Nonnull)fromView complete:(ILABPopOverCompleteBlock _Nullable)completeBlock;
+
 
 /**
  Displays the popover from a specific point and highlights a group of views
-
+ 
  @param contentView The content view to display in the dialog.
  @param fromPoint The point to display the popup from, local to the view to display the popup from.
  @param fromView The view to display the popup from.
  @param highlightViews Array of views to highlight on popover
  */
 -(void)show:(UIView * _Nonnull)contentView fromPoint:(CGPoint)fromPoint fromView:(UIView * _Nonnull)fromView highlightViews:(NSArray<UIView *> * _Nonnull)highlightViews;
+
+/**
+ Displays the popover from a specific point and highlights a group of views
+ 
+ @param contentView The content view to display in the dialog.
+ @param fromPoint The point to display the popup from, local to the view to display the popup from.
+ @param fromView The view to display the popup from.
+ @param highlightViews Array of views to highlight on popover
+ @param completeBlock The block (optional) to call when showing the popover has completed.
+ */
+-(void)show:(UIView * _Nonnull)contentView
+  fromPoint:(CGPoint)fromPoint fromView:(UIView * _Nonnull)fromView
+highlightViews:(NSArray<UIView *> * _Nonnull)highlightViews
+   complete:(ILABPopOverCompleteBlock _Nullable)completeBlock;
 
 
 /**

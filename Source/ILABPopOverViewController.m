@@ -154,6 +154,10 @@
 #pragma mark - Display/Dismiss
 
 -(void)showAsDialog:(UIView *)contentView {
+    [self showAsDialog:contentView complete:nil];
+}
+
+-(void)showAsDialog:(UIView * _Nonnull)contentView complete:(ILABPopOverCompleteBlock _Nullable)completeBlock {
     UIWindow *window = [[[UIApplication sharedApplication] windows] lastObject] ?: [[UIApplication sharedApplication] keyWindow];
     if (!window) {
         return;
@@ -167,16 +171,24 @@
 
     displayedContentView = contentView;
 
-    [self displayInView:window fromOrigin:NO];
+    [self displayInView:window fromOrigin:NO complete:completeBlock];
     
 }
 
 -(void)show:(UIView *)contentView fromView:(UIView *)fromView {
+    [self show:contentView fromView:fromView  complete:nil];
+}
+
+-(void)show:(UIView *)contentView fromView:(UIView *)fromView complete:(ILABPopOverCompleteBlock _Nullable)completeBlock {
     CGPoint pt = CGPointMake(CGRectGetMidX(fromView.bounds), 0);
-    [self show:contentView fromPoint:pt fromView:fromView];
+    [self show:contentView fromPoint:pt fromView:fromView complete:completeBlock];
 }
 
 -(void)show:(UIView *)contentView fromPoint:(CGPoint)fromPoint fromView:(UIView *)fromView {
+    [self show:contentView fromPoint:fromPoint fromView:fromView complete:nil];
+}
+
+-(void)show:(UIView *)contentView fromPoint:(CGPoint)fromPoint fromView:(UIView *)fromView complete:(ILABPopOverCompleteBlock _Nullable)completeBlock {
     UIWindow *window = [[[UIApplication sharedApplication] windows] lastObject] ?: [[UIApplication sharedApplication] keyWindow];
     if (!window) {
         return;
@@ -242,10 +254,19 @@
     }
 
 
-    [self displayInView:window fromOrigin:YES];
+    [self displayInView:window fromOrigin:YES complete:completeBlock];
 }
 
 -(void)show:(UIView * _Nonnull)contentView fromPoint:(CGPoint)fromPoint fromView:(UIView * _Nonnull)fromView highlightViews:(NSArray<UIView *> * _Nonnull)highlightViews {
+    [self show:contentView fromPoint:fromPoint fromView:fromView highlightViews:highlightViews complete:nil];
+}
+
+-(void)show:(UIView * _Nonnull)contentView
+  fromPoint:(CGPoint)fromPoint
+   fromView:(UIView * _Nonnull)fromView
+highlightViews:(NSArray<UIView *> * _Nonnull)highlightViews
+   complete:(ILABPopOverCompleteBlock _Nullable)completeBlock {
+   
     UIWindow *window = [[[UIApplication sharedApplication] windows] lastObject] ?: [[UIApplication sharedApplication] keyWindow];
     if (!window) {
         return;
@@ -317,12 +338,12 @@
     }
     
     
-    [self displayInView:window fromOrigin:YES];
+    [self displayInView:window fromOrigin:YES complete:completeBlock];
 
 }
 
 
--(void)displayInView:(UIView *)view fromOrigin:(BOOL)fromOrigin {
+-(void)displayInView:(UIView *)view fromOrigin:(BOOL)fromOrigin complete:(ILABPopOverCompleteBlock)completeBlock {
     if (!overlayEffectView) {
         if (!_showOverlay) {
             overlayControl.backgroundColor = UIColor.clearColor;
@@ -384,6 +405,10 @@
                      completion:^(BOOL finished) {
                          if (_delegate && [_delegate respondsToSelector:@selector(popOverDidShow:)]) {
                              [_delegate popOverDidShow:self];
+                         }
+                         
+                         if (completeBlock) {
+                             completeBlock();
                          }
                      }];
 }
