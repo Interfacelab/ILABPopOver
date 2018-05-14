@@ -152,7 +152,13 @@
     contentView.opaque = NO;
     contentView.backgroundColor = UIColor.clearColor;
     [contentView removeFromSuperview];
-    [containerView addSubview:contentView];
+    
+    if ([containerView isKindOfClass:[UIVisualEffectView class]]) {
+        [[((UIVisualEffectView *)containerView) contentView] addSubview:contentView];
+    } else {
+        [containerView addSubview:contentView];
+    }
+    
     contentView.frame = CGRectMake(contentOrigin.x, contentOrigin.y, contentView.frame.size.width, contentView.frame.size.height);
 }
 
