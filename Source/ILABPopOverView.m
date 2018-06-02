@@ -138,10 +138,14 @@
     CAShapeLayer *maskLayer = [self buildLayerMask:direction arrowLocation:arrowLocation];
 
     if (effectsView && maskLayer) {
-        UIView *maskView = [[UIView alloc] initWithFrame:self.bounds];
-        maskView.backgroundColor = UIColor.blackColor;
-        maskView.layer.mask = maskLayer;
-        effectsView.maskView = maskView;
+        if (@available(iOS 11.0, *)) {
+            self.layer.mask = maskLayer;
+        } else {
+            UIView *maskView = [[UIView alloc] initWithFrame:self.bounds];
+            maskView.backgroundColor = UIColor.blackColor;
+            maskView.layer.mask = maskLayer;
+            effectsView.maskView = maskView;
+        }
     } else {
         self.layer.backgroundColor = self.popoverColor.CGColor;
         if (maskLayer) {

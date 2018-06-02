@@ -241,15 +241,23 @@
         CAShapeLayer *maskLayer = [CAShapeLayer layer];
         maskLayer.path = maskPath.CGPath;
         maskLayer.fillRule = kCAFillRuleEvenOdd;
-        
-        UIView *maskView = [[UIView alloc] initWithFrame:window.bounds];
-        maskView.backgroundColor = UIColor.blackColor;
-        maskView.layer.mask = maskLayer;
-        
-        if (overlayEffectView) {
-            overlayEffectView.maskView = maskView;
+
+        if (@available(iOS 11.0, *)) {
+            if (overlayEffectView) {
+                overlayEffectView.layer.mask = maskLayer;
+            } else {
+                overlayControl.layer.mask = maskLayer;
+            }
         } else {
-            overlayControl.maskView = maskView;
+            UIView *maskView = [[UIView alloc] initWithFrame:window.bounds];
+            maskView.backgroundColor = UIColor.blackColor;
+            maskView.layer.mask = maskLayer;
+            
+            if (overlayEffectView) {
+                overlayEffectView.maskView = maskView;
+            } else {
+                overlayControl.maskView = maskView;
+            }
         }
     }
 
@@ -303,8 +311,10 @@ highlightViews:(NSArray<UIView *> * _Nonnull)highlightViews
     [popOverView prepareForDisplay:contentView fromDirection:displayedDirection arrowLocation:[popOverView convertPoint:fromPoint fromView:fromView]];
     popOverView.frame = proposedRect;
     
+    overlayControl.layer.mask = nil;
     overlayControl.maskView = nil;
     if (overlayEffectView) {
+        overlayEffectView.layer.mask = nil;
         overlayEffectView.maskView = nil;
     }
     
@@ -326,20 +336,26 @@ highlightViews:(NSArray<UIView *> * _Nonnull)highlightViews
         maskLayer.path = maskPath.CGPath;
         maskLayer.fillRule = kCAFillRuleEvenOdd;
         
-        UIView *maskView = [[UIView alloc] initWithFrame:window.bounds];
-        maskView.backgroundColor = UIColor.blackColor;
-        maskView.layer.mask = maskLayer;
-        
-        if (overlayEffectView) {
-            overlayEffectView.maskView = maskView;
+        if (@available(iOS 11.0, *)) {
+            if (overlayEffectView) {
+                overlayEffectView.layer.mask = maskLayer;
+            } else {
+                overlayControl.layer.mask = maskLayer;
+            }
         } else {
-            overlayControl.maskView = maskView;
+            UIView *maskView = [[UIView alloc] initWithFrame:window.bounds];
+            maskView.backgroundColor = UIColor.blackColor;
+            maskView.layer.mask = maskLayer;
+            
+            if (overlayEffectView) {
+                overlayEffectView.maskView = maskView;
+            } else {
+                overlayControl.maskView = maskView;
+            }
         }
     }
     
-    
     [self displayInView:window fromOrigin:YES complete:completeBlock];
-
 }
 
 

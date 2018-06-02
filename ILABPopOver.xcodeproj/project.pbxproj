@@ -34,6 +34,7 @@
 		FF561AE31EE1779400D9C635 /* ILABPopOverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILABPopOverView.m; sourceTree = "<group>"; };
 		FF561AE41EE1779400D9C635 /* ILABPopOverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILABPopOverViewController.h; sourceTree = "<group>"; };
 		FF561AE51EE1779400D9C635 /* ILABPopOverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILABPopOverViewController.m; sourceTree = "<group>"; };
+		FF6DE17A20C2636600BD6191 /* ILABPopOver.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = ILABPopOver.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +59,7 @@
 		FF561AB81EE176CC00D9C635 = {
 			isa = PBXGroup;
 			children = (
+				FF6DE17A20C2636600BD6191 /* ILABPopOver.podspec */,
 				FF561ADE1EE1770400D9C635 /* Source */,
 				FF561ADC1EE1770400D9C635 /* Resources */,
 				FF561AC31EE176CC00D9C635 /* Products */,
@@ -404,6 +406,7 @@
 				FF561AD81EE176CD00D9C635 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FF561AD91EE176CD00D9C635 /* Build configuration list for PBXNativeTarget "ILABPopOverTests" */ = {
 			isa = XCConfigurationList;
@@ -412,6 +415,7 @@
 				FF561ADB1EE176CD00D9C635 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
